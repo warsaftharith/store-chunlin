@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductAllSkeleton } from '../components/ui/ProductAllSkeleton';
 import { ArrowLeft, Search, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -27,8 +28,14 @@ export default function ProductAll() {
 
   const content = productAllContent[lang];
 
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
+  const querySearch = searchParams.get('q') || '';
+  const [search, setSearch] = useState(querySearch);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setSearch(querySearch);
+  }, [querySearch]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
