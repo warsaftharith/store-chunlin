@@ -14,23 +14,34 @@ import { Contact } from './components/sections/Contact';
 
 import { HeroSkeleton } from './components/ui/PageSkeleton';
 
+import logo from './assets/logo.svg';
+import storeFront from './assets/store.jpeg';
+import promoSukun from './assets/promo/promo-sukun.png';
+
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
+    const images = [logo, storeFront, promoSukun];
 
-    return () => clearTimeout(timer);
+    const preloadImages = images.map((src) => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+
+        img.src = src;
+
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+      });
+    });
+
+    Promise.all(preloadImages).then(() => {
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
-    if (loading) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = loading ? 'hidden' : '';
 
     return () => {
       document.body.style.overflow = '';
@@ -38,11 +49,7 @@ function App() {
   }, [loading]);
 
   if (loading) {
-    return (
-      <Layout>
-        <HeroSkeleton />
-      </Layout>
-    );
+    return <HeroSkeleton />;
   }
 
   return (
