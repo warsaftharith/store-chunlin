@@ -38,20 +38,42 @@ export default function ProductAll() {
   }, [querySearch]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const images = [
+      berasImg,
+      minyakImg,
+      gulaImg,
+      telurImg,
+      mieImg,
+      bumbuImg,
+      snackImg,
+      walletImg,
+      rokokImg,
+      kripikImg,
+    ];
+
+    const preloadImages = images.map((src) => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+
+        img.src = src;
+
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+      });
+    });
+
+    Promise.all(preloadImages).then(() => {
       setLoading(false);
-    }, 900);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant',
     });
   }, []);
+
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant',
+      });
+    }, []);
 
   const productImages = [
     berasImg,
