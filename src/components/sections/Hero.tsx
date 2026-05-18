@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../../context/LangContext';
 import { storeInfo, whatsappUrl } from '../../data/content';
 import { Button } from '../ui/Button';
-import storeFront from '../../assets/store.jpeg';
+import storeFront from '../../assets/store.png';
 
 import berasImg from '../../assets/promo/promo-sukun.png';
 

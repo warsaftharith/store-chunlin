@@ -15,7 +15,7 @@ import { Contact } from './components/sections/Contact';
 import { HeroSkeleton } from './components/ui/PageSkeleton';
 
 import logo from './assets/logo.svg';
-import storeFront from './assets/store.jpeg';
+import storeFront from './assets/store.png';
 import promoSukun from './assets/promo/promo-sukun.png';
 
 function App() {
