@@ -1,11 +1,8 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/products",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!robots.txt|sitemap.xml|favicon.svg|preview.png).*)",
       "destination": "/index.html"
     }
   ]
