@@ -22,6 +22,7 @@ import snackImg from '../assets/product/product-snack.png';
 import walletImg from '../assets/product/product-wallet.png';
 import rokokImg from '../assets/product/product-sukun.png';
 import kripikImg from '../assets/product/product-kripik-pisang.png'; 
+import { Helmet } from 'react-helmet-async';
 
 export default function ProductAll() {
   const { lang } = useLang();
@@ -103,6 +104,48 @@ export default function ProductAll() {
   }
 
   return (
+      <>
+
+      <Helmet>
+        <title>Produk Warung Chunlin - Sembako, Top Up & Kebutuhan Harian</title>
+
+        <meta
+          name="description"
+          content="Lihat daftar produk Warung Chunlin seperti beras, minyak goreng, gula, telur, mie instan, snack, rokok, top up DANA, OVO, GoPay, ShopeePay, dan kebutuhan harian di Jerowaru Lombok Timur."
+        />
+
+        <meta
+          name="keywords"
+          content="produk warung chunlin, warung chunlin products, sembako jerowaru, warung sembako lombok timur, top up dana jerowaru, top up ovo, top up gopay, top up shopeepay, kebutuhan harian lombok"
+        />
+
+        <link
+          rel="canonical"
+          href="https://warung-chunlin.my.id/products"
+        />
+
+        <meta property="og:title" content="Produk Warung Chunlin" />
+
+        <meta
+          property="og:description"
+          content="Daftar produk Warung Chunlin: sembako, snack, rokok, top up e-wallet, dan kebutuhan harian."
+        />
+
+        <meta
+          property="og:image"
+          content="https://warung-chunlin.my.id/preview.png"
+        />
+
+        <meta
+          property="og:url"
+          content="https://warung-chunlin.my.id/products"
+        />
+
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+  
     <Layout>
       <section className="min-h-screen overflow-hidden bg-cream py-10 sm:py-12">
         <div className="container-custom">
@@ -130,6 +173,10 @@ export default function ProductAll() {
             <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               {content.heading}
             </h1>
+
+            <p className="mt-4 text-base leading-7 text-muted">
+              {content.description}
+            </p>
 
             <p className="mt-4 text-base leading-7 text-muted">
               {content.cardDescription}
@@ -224,5 +271,6 @@ export default function ProductAll() {
         </div>
       </section>
     </Layout>
+    </>
   );
 }
